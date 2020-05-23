@@ -1,0 +1,234 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:XUi">
+
+    <Style x:Key="XUi_ToggleSwitchBase" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource FlatPressBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource FlatScrollOverBrush}"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="MinWidth" Value="40"/>
+        <Setter Property="RenderTransformOrigin" Value="0,0.5"/>
+        <Setter Property="FontSize" Value="14"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{DynamicResource CornerRadius}"
+                            Padding="5">
+
+                        <Border x:Name="InnerBorder"
+                                Background="{TemplateBinding Foreground}"
+                                CornerRadius="{DynamicResource CornerRadius}"
+                                RenderTransformOrigin="0,0.5">
+
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="0.5" ScaleY="1"/>
+                            </Border.RenderTransform>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="InnerBorder" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame Value="0,0.5" KeyTime="0"/>
+
+                                            <EasingPointKeyFrame Value="1,0.5" KeyTime="0:0:0.25">
+                                                <EasingPointKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingPointKeyFrame.EasingFunction>
+                                            </EasingPointKeyFrame>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="InnerBorder" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame Value="1,0.5" KeyTime="0"/>
+
+                                            <EasingPointKeyFrame Value="0,0.5" KeyTime="0:0:0.25">
+                                                <EasingPointKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingPointKeyFrame.EasingFunction>
+                                            </EasingPointKeyFrame>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource FlatScrollPressBrush}"/>
+            </Trigger>
+
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource BaseBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="XUi_ToggleSwitchMid" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource FlatPressBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource FlatScrollOverBrush}"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="MinWidth" Value="40"/>
+        <Setter Property="RenderTransformOrigin" Value="0,0.5"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{DynamicResource CornerRadius}"
+                            Padding="5">
+
+                        <Border x:Name="InnerBorder"
+                                Background="{TemplateBinding Foreground}"
+                                CornerRadius="{DynamicResource CornerRadius}"
+                                RenderTransformOrigin="0,0.5">
+
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="0.5" ScaleY="1"/>
+                            </Border.RenderTransform>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="InnerBorder" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame Value="0,0.5" KeyTime="0"/>
+
+                                            <EasingPointKeyFrame Value="1,0.5" KeyTime="0:0:0.25">
+                                                <EasingPointKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingPointKeyFrame.EasingFunction>
+                                            </EasingPointKeyFrame>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="InnerBorder" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame Value="1,0.5" KeyTime="0"/>
+
+                                            <EasingPointKeyFrame Value="0,0.5" KeyTime="0:0:0.25">
+                                                <EasingPointKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingPointKeyFrame.EasingFunction>
+                                            </EasingPointKeyFrame>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource FlatScrollPressBrush}"/>
+            </Trigger>
+
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource MidBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="XUi_ToggleSwitchDark" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource FlatPressBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource FlatScrollOverBrush}"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="MinWidth" Value="40"/>
+        <Setter Property="RenderTransformOrigin" Value="0,0.5"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{DynamicResource CornerRadius}"
+                            Padding="5">
+
+                        <Border x:Name="InnerBorder"
+                                Background="{TemplateBinding Foreground}"
+                                CornerRadius="{DynamicResource CornerRadius}"
+                                RenderTransformOrigin="0,0.5">
+
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="0.5" ScaleY="1"/>
+                            </Border.RenderTransform>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="InnerBorder" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame Value="0,0.5" KeyTime="0"/>
+
+                                            <EasingPointKeyFrame Value="1,0.5" KeyTime="0:0:0.25">
+                                                <EasingPointKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingPointKeyFrame.EasingFunction>
+                                            </EasingPointKeyFrame>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="InnerBorder" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame Value="1,0.5" KeyTime="0"/>
+
+                                            <EasingPointKeyFrame Value="0,0.5" KeyTime="0:0:0.25">
+                                                <EasingPointKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingPointKeyFrame.EasingFunction>
+                                            </EasingPointKeyFrame>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource FlatScrollPressBrush}"/>
+            </Trigger>
+
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource DarkBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

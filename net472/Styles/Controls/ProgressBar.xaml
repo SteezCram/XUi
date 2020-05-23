@@ -1,0 +1,555 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:XUi"
+                    xmlns:converters="clr-namespace:XUi.Converters">
+
+    <converters:MathConverter x:Key="MathConverter"/>
+
+    <Style x:Key="XUi_ProgressBarDots" TargetType="ProgressBar">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Foreground" Value="{DynamicResource BaseBrush}"/>
+        <Setter Property="IsIndeterminate" Value="True"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse x:Name="Ellipse1" StrokeThickness="0" Margin="{TemplateBinding Padding}" Fill="{TemplateBinding Foreground}"
+                                 Height="{TemplateBinding Height, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE/6}" 
+                                 Width="{TemplateBinding Height, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE/6}" 
+                                 Opacity="0"/>
+
+                        <Ellipse x:Name="Ellipse2" StrokeThickness="0" Margin="{TemplateBinding Padding}" Fill="{TemplateBinding Foreground}"
+                                 Height="{TemplateBinding Height, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE/6}" 
+                                 Width="{TemplateBinding Height, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE/6}" 
+                                 Opacity="0"/>
+
+                        <Ellipse x:Name="Ellipse3" StrokeThickness="0" Margin="{TemplateBinding Padding}" Fill="{TemplateBinding Foreground}"
+                                 Height="{TemplateBinding Height, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE/6}" 
+                                 Width="{TemplateBinding Height, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE/6}"
+                                 Opacity="0"/>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate"/>
+
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ellipse1" Storyboard.TargetProperty="(Ellipse.Opacity)"
+                                                                       Duration="0:0:2" RepeatBehavior="Forever">
+
+                                            <EasingDoubleKeyFrame Value="0" KeyTime="0"/>
+
+                                            <EasingDoubleKeyFrame Value="1" KeyTime="0:0:0.5">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame Value="0" KeyTime="0:0:1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ellipse2" Storyboard.TargetProperty="(Ellipse.Opacity)"
+                                                                       Duration="0:0:2" RepeatBehavior="Forever">
+
+                                            <EasingDoubleKeyFrame Value="0" KeyTime="0:0:0.5"/>
+
+                                            <EasingDoubleKeyFrame Value="1" KeyTime="0:0:1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame Value="0" KeyTime="0:0:1.5">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ellipse3" Storyboard.TargetProperty="(Ellipse.Opacity)"
+                                                                       Duration="0:0:2" RepeatBehavior="Forever">
+
+                                            <EasingDoubleKeyFrame Value="0" KeyTime="0:0:1"/>
+
+                                            <EasingDoubleKeyFrame Value="1" KeyTime="0:0:1.5">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame Value="0" KeyTime="0:0:2">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Primary ProgressBar -->
+
+    <Style x:Key="XUi_ProgressBar" TargetType="ProgressBar">
+        <Setter Property="Background" Value="{DynamicResource FlatPressBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid Height="{TemplateBinding Height}"
+                          Width="{TemplateBinding Width}"
+                          Background="Transparent">
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate"/>
+
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Animation">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Animation">
+                                            <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:0.5" Value="0,0"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:2.5" Value="1,0"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:5" Value="1,0"/>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=Mask}"/>
+                            </Grid.OpacityMask>
+
+                            <Border x:Name="Mask" Background="{TemplateBinding Background}"
+                                    CornerRadius="{DynamicResource CornerRadius}"/>
+
+                            <Rectangle x:Name="PART_Track" Fill="Transparent"
+                                       RadiusX="{DynamicResource CornerRadiusNumber}"
+                                       RadiusY="{DynamicResource CornerRadiusNumber}"/>
+
+                            <Grid x:Name="PART_Indicator" ClipToBounds="true" 
+                                  HorizontalAlignment="Left">
+
+                                <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}"
+                                           RadiusX="{DynamicResource CornerRadiusNumber}"
+                                           RadiusY="{DynamicResource CornerRadiusNumber}"/>
+
+                                <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5"
+                                           RadiusX="{DynamicResource CornerRadiusNumber}"
+                                           RadiusY="{DynamicResource CornerRadiusNumber}">
+
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsIndeterminate" Value="true">
+                            <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="XUi_ProgressBarBaseAccent" TargetType="ProgressBar">
+        <Setter Property="Background" Value="{DynamicResource FlatPressBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid x:Name="Grid"
+                          Height="{TemplateBinding Height}"
+                          Width="{TemplateBinding Width}"
+                          Background="Transparent">
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate"/>
+
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Animation">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Animation">
+                                            <DiscretePointKeyFrame KeyTime="0" Value="0,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:0.5" Value="0,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:2.5" Value="1,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:5" Value="1,0.5"/>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=Mask}"/>
+                            </Grid.OpacityMask>
+
+                            <Border x:Name="Mask" Background="{TemplateBinding Background}"
+                                    CornerRadius="{DynamicResource CornerRadius}"/>
+
+                            <Rectangle x:Name="PART_Track" Fill="Transparent"
+                                       RadiusX="{DynamicResource CornerRadiusNumber}"
+                                       RadiusY="{DynamicResource CornerRadiusNumber}"/>
+
+                            <Grid x:Name="PART_Indicator" ClipToBounds="true" 
+                                  HorizontalAlignment="Left">
+
+                                <Rectangle x:Name="Indicator" Fill="{DynamicResource BaseBrush}"
+                                           RadiusX="{DynamicResource CornerRadiusNumber}"
+                                           RadiusY="{DynamicResource CornerRadiusNumber}"/>
+
+                                <Rectangle x:Name="Animation" Fill="{DynamicResource BaseBrush}" RenderTransformOrigin="0.5,0.5"
+                                           RadiusX="{DynamicResource CornerRadiusNumber}"
+                                           RadiusY="{DynamicResource CornerRadiusNumber}">
+
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsIndeterminate" Value="true">
+                            <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="XUi_ProgressBarMidAccent" TargetType="ProgressBar">
+        <Setter Property="Background" Value="{DynamicResource FlatPressBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid Height="{TemplateBinding Height}"
+                          Width="{TemplateBinding Width}"
+                          Background="Transparent">
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate"/>
+
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Animation">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Animation">
+                                            <DiscretePointKeyFrame KeyTime="0" Value="0,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:0.5" Value="0,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:2.5" Value="1,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:5" Value="1,0.5"/>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=Mask}"/>
+                            </Grid.OpacityMask>
+
+                            <Border x:Name="Mask" Background="{TemplateBinding Background}"
+                                    CornerRadius="{DynamicResource CornerRadius}"/>
+
+                            <Rectangle x:Name="PART_Track" Fill="Transparent"
+                                       RadiusX="{DynamicResource CornerRadiusNumber}"
+                                       RadiusY="{DynamicResource CornerRadiusNumber}"/>
+
+                            <Grid x:Name="PART_Indicator" ClipToBounds="true" 
+                                  HorizontalAlignment="Left">
+
+                                <Rectangle x:Name="Indicator" Fill="{DynamicResource MidBrush}"
+                                           RadiusX="{DynamicResource CornerRadiusNumber}"
+                                           RadiusY="{DynamicResource CornerRadiusNumber}"/>
+
+                                <Rectangle x:Name="Animation" Fill="{DynamicResource MidBrush}" RenderTransformOrigin="0.5,0.5"
+                                           RadiusX="{DynamicResource CornerRadiusNumber}"
+                                           RadiusY="{DynamicResource CornerRadiusNumber}">
+
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsIndeterminate" Value="true">
+                            <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="XUi_ProgressBarDarkAccent" TargetType="ProgressBar">
+        <Setter Property="Background" Value="{DynamicResource FlatPressBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid x:Name="Grid"
+                          Height="{TemplateBinding Height}"
+                          Width="{TemplateBinding Width}"
+                          Background="Transparent">
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate"/>
+
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Animation">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseIn" Exponent="2"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Animation">
+                                            <DiscretePointKeyFrame KeyTime="0" Value="0,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:0.5" Value="0,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:2.5" Value="1,0.5"/>
+                                            <DiscretePointKeyFrame KeyTime="0:0:5" Value="1,0.5"/>
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=Mask}"/>
+                            </Grid.OpacityMask>
+
+                            <Border x:Name="Mask" Background="{TemplateBinding Background}"
+                                    CornerRadius="{DynamicResource CornerRadius}"/>
+
+                            <Rectangle x:Name="PART_Track" Fill="Transparent"
+                                       RadiusX="{DynamicResource CornerRadiusNumber}"
+                                       RadiusY="{DynamicResource CornerRadiusNumber}"/>
+
+                            <Grid x:Name="PART_Indicator" ClipToBounds="true" 
+                                  HorizontalAlignment="Left">
+
+                                <Rectangle x:Name="Indicator" Fill="{DynamicResource DarkBrush}"
+                                           RadiusX="{DynamicResource CornerRadiusNumber}"
+                                           RadiusY="{DynamicResource CornerRadiusNumber}"/>
+
+                                <Rectangle x:Name="Animation" Fill="{DynamicResource DarkBrush}" RenderTransformOrigin="0.5,0.5"
+                                           RadiusX="{DynamicResource CornerRadiusNumber}"
+                                           RadiusY="{DynamicResource CornerRadiusNumber}">
+
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsIndeterminate" Value="true">
+                            <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

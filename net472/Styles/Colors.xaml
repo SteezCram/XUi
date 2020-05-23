@@ -1,0 +1,114 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:XUi"
+                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <!-- Accent Colors -->
+    <Color x:Key="BaseColor">#55B5ED</Color>
+    <Color x:Key="MidColor">#43A3DB</Color>
+    <Color x:Key="DarkColor">#3191C9</Color>
+
+    <SolidColorBrush x:Key="BaseBrush" Color="{DynamicResource BaseColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="MidBrush" Color="{DynamicResource MidColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="DarkBrush" Color="{DynamicResource DarkColor}" options:Freeze="True"/>
+
+
+    <!-- Themes Colors -->
+    <Color x:Key="WhiteThemeColor">#ffffff</Color>
+    <Color x:Key="BlackThemeColor">#1c1c1c</Color>
+
+    <SolidColorBrush x:Key="WhiteThemeBrush" Color="{DynamicResource WhiteThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="BlackThemeBrush" Color="{DynamicResource BlackThemeColor}" options:Freeze="True"/>
+    
+    <!-- Fonts Colors -->
+    <Color x:Key="WhiteFontColor">#ffffff</Color>
+    <Color x:Key="BlackFontColor">#000000</Color>
+
+    <SolidColorBrush x:Key="WhiteFontBrush" Color="{DynamicResource WhiteFontColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="BlackFontBrush" Color="{DynamicResource BlackFontColor}" options:Freeze="True"/>
+
+    <!-- Generic Colors -->
+    <Color x:Key="TransparentThemeColor">#3F808080</Color>
+
+    <SolidColorBrush x:Key="TransparentThemeBrush" Color="{DynamicResource TransparentThemeColor}" options:Freeze="True"/>
+
+
+    <!-- Flat Colors White Theme -->
+    <Color x:Key="FlatBaseWhiteThemeColor">#ffffff</Color>
+    <Color x:Key="FlatOverWhiteThemeColor">#ededed</Color>
+    <Color x:Key="FlatPressWhiteThemeColor">#dbdbdb</Color>
+    <Color x:Key="FlatScrollOverWhiteThemeColor">#c9c9c9</Color>
+    <Color x:Key="FlatScrollPressWhiteThemeColor">#b7b7b7</Color>
+
+    <SolidColorBrush x:Key="FlatBaseWhiteThemeBrush" Color="{DynamicResource FlatBaseWhiteThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatOverWhiteThemeBrush" Color="{DynamicResource FlatOverWhiteThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatPressWhiteThemeBrush" Color="{DynamicResource FlatPressWhiteThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatScrollOverWhiteThemeBrush" Color="{DynamicResource FlatScrollOverWhiteThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatScrollPressWhiteThemeBrush" Color="{DynamicResource FlatScrollPressBlackThemeColor}" options:Freeze="True"/>
+
+
+    <!-- Flat Colors Black Theme -->
+    <Color x:Key="FlatBaseBlackThemeColor">#1c1c1c</Color>
+    <Color x:Key="FlatOverBlackThemeColor">#2e2e2e</Color>
+    <Color x:Key="FlatPressBlackThemeColor">#404040</Color>
+    <Color x:Key="FlatScrollOverBlackThemeColor">#525252</Color>
+    <Color x:Key="FlatScrollPressBlackThemeColor">#646464</Color>
+
+    <SolidColorBrush x:Key="FlatBaseBlackThemeBrush" Color="{DynamicResource FlatBaseBlackThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatOverBlackThemeBrush" Color="{DynamicResource FlatOverBlackThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatPressBlackThemeBrush" Color="{DynamicResource FlatPressBlackThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatScrollOverBlackThemeBrush" Color="{DynamicResource FlatScrollOverBlackThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatScrollPressBlackThemeBrush" Color="{DynamicResource FlatScrollPressBlackThemeColor}" options:Freeze="True"/>
+
+
+    <!-- Used Colors -->
+    <Color x:Key="ThemeColor">#ffffff</Color>
+    <Color x:Key="FlatBaseColor">#ffffff</Color>
+    <Color x:Key="FlatOverColor">#f1f1f1</Color>
+    <Color x:Key="FlatPressColor">#e3e3e3</Color>
+    <Color x:Key="FlatScrollOverColor">#d5d5d5</Color>
+    <Color x:Key="FlatScrollPressColor">#c7c7c7</Color>
+    <Color x:Key="DialogTransparentColor">#3F808080</Color>
+    <Color x:Key="FontColor">#000000</Color>
+
+    <!-- Used Colors -->
+    <SolidColorBrush x:Key="ThemeBrush" Color="{DynamicResource ThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatBaseBrush" Color="{DynamicResource FlatBaseColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatOverBrush" Color="{DynamicResource FlatOverColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatPressBrush" Color="{DynamicResource FlatPressColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatScrollOverBrush" Color="{DynamicResource FlatScrollOverColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatScrollPressBrush" Color="{DynamicResource FlatScrollPressColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="DialogTransparentBrush" Color="{DynamicResource DialogTransparentColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FontBrush" Color="{DynamicResource FontColor}" options:Freeze="True"/>
+
+    <!--<Color x:Key="BaseColor">#FF0097FF</Color>
+    <Color x:Key="BaseColorSmallLight">#CC0097FF</Color>
+    <Color x:Key="BaseColorMidLight">#990097FF</Color>
+    <Color x:Key="BaseColorVeryLight">#660097FF</Color>
+    <Color x:Key="DarkBaseColor">#FF0061A4</Color>
+    <Color x:Key="DarkBaseColorSmallLight">#CC0061A4</Color>
+    <Color x:Key="DarkBaseColorMidLight">#990061A4</Color>
+    <Color x:Key="DarkBaseColorVeryLight">#660061A4</Color>
+
+    <SolidColorBrush x:Key="BaseBrush" Color="{DynamicResource BaseColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="BaseBrushSmallLight" Color="{DynamicResource BaseColorSmallLight}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="BaseBrushMidLight" Color="{DynamicResource BaseColorMidLight}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="BaseBrushVeryLight" Color="{DynamicResource BaseColorVeryLight}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="DarkBaseBrush" Color="{DynamicResource DarkBaseColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="DarkBaseBrushSmallLight" Color="{DynamicResource DarkBaseColorSmallLight}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="DarkBaseBrushMidLight" Color="{DynamicResource DarkBaseColorMidLight}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="DarkBaseBrushVeryLight" Color="{DynamicResource DarkBaseColorVeryLight}" options:Freeze="True"/>-->
+
+    <!--<LinearGradientBrush x:Key="GradientBrush1" StartPoint="0,0.5" EndPoint="1,0.5" options:Freeze="True">
+        <GradientStop Color="#ef0000" Offset="0"/>
+        <GradientStop Color="#ef7b00" Offset="0.51"/>
+        <GradientStop Color="#efbf00" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GradientBrushInverted1" StartPoint="0,0.5" EndPoint="1,0.5" options:Freeze="True">
+        <GradientStop Color="#efbf00" Offset="0"/>
+        <GradientStop Color="#ef7b00" Offset="0.51"/>
+        <GradientStop Color="#ef0000" Offset="1"/>
+    </LinearGradientBrush>-->
+
+</ResourceDictionary>

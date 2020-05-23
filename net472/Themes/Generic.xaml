@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:XUi.Controls"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/XUi;component/Themes/XUiWindow.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/XUi;component/Themes/XUiWindowTool.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>
