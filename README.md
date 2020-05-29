@@ -10,4 +10,4 @@ XUi bring new window controls with a dialog system.
 Many styles are available for basic WPF control.
 
 # Documentation
-Don't forget to read the documentation to lear everything about XUi.
+Don't forget to read the documentation to lear everything about XUi. The documentation is in the Wiki of the repository.
