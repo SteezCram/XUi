@@ -17,10 +17,15 @@ using System.Windows.Shapes;
 namespace XUi.Controls.Dialog
 {
     /// <summary>
-    /// Logique d'interaction pour CustomDialog.xaml
+    /// Custom dialog for XUi
     /// </summary>
     public partial class CustomDialog : UserControl, IDialog
     {
+        /// <summary>
+        /// Custom dialog to show
+        /// </summary>
+        /// 
+        /// <param name="dialog">Dialog content to set</param>
         public CustomDialog(UIElement dialog)
         {
             InitializeComponent();
@@ -69,6 +74,11 @@ namespace XUi.Controls.Dialog
             await Task.Delay(250);
         }
 
+        /// <summary>
+        /// Wait the message, wait until the user click of one of the button
+        /// </summary>
+        /// 
+        /// <returns></returns>
         public async Task<MessageResult> WaitMessageResult()
         {
             TaskCompletionSource<MessageResult> tcs = new TaskCompletionSource<MessageResult>();

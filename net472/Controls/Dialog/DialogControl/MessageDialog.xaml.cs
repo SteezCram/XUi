@@ -17,12 +17,18 @@ using System.Windows.Shapes;
 namespace XUi.Controls.Dialog
 {
     /// <summary>
-    /// Logique d'interaction pour MessageDialog.xaml
+    /// Message dialog of XUi, useful to show a message to the user
     /// </summary>
     public partial class MessageDialog : UserControl, IDialog
     {
         #region Constructor
 
+        /// <summary>
+        /// Show a message dialog with a specific title and message
+        /// </summary>
+        /// 
+        /// <param name="title">Title to use</param>
+        /// <param name="message">Message to use</param>
         public MessageDialog(string title, string message)
         {
             InitializeComponent();
@@ -32,11 +38,16 @@ namespace XUi.Controls.Dialog
 
             Button defaultButton = this.FindName($"YesButton") as Button;
             defaultButton.IsDefault = true;
-            defaultButton.Style = XUiTheme.XUiDictionnaries["XUi_ButtonAccent"] as Style;
+            defaultButton.Style = XUiTheme.XUiDictionaries["XUi_ButtonAccent"] as Style;
 
             this.Loaded += DialogLoaded;
         }
 
+        /// <summary>
+        /// Show a message dialog with a specific dialog settings
+        /// </summary>
+        /// 
+        /// <param name="dialogSettings">Dialog settings to use</param>
         public MessageDialog(DialogSettings dialogSettings)
         {
             InitializeComponent();
@@ -44,13 +55,13 @@ namespace XUi.Controls.Dialog
             Title.Text = dialogSettings.Title;
             Message.Text = dialogSettings.Message;
 
-            ButtonsStackPanel.HorizontalAlignment = dialogSettings.ButtonAlignement;
-            Title.HorizontalAlignment = dialogSettings.TitleAlignement;
-            Message.HorizontalAlignment = dialogSettings.MessageAlignement;
+            ButtonsStackPanel.HorizontalAlignment = dialogSettings.ButtonAlignment;
+            Title.HorizontalAlignment = dialogSettings.TitleAlignment;
+            Message.HorizontalAlignment = dialogSettings.MessageAlignment;
 
             Button defaultButton = this.FindName($"{dialogSettings.DefaultButton}Button") as Button;
             defaultButton.IsDefault = true;
-            defaultButton.Style = XUiTheme.XUiDictionnaries["XUi_ButtonAccent"] as Style;
+            defaultButton.Style = XUiTheme.XUiDictionaries["XUi_ButtonAccent"] as Style;
 
             if (dialogSettings.YesText != null && dialogSettings.YesText != "")
                 ((TextBlock)YesButton.Content).Text = dialogSettings.YesText;

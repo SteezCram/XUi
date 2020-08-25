@@ -34,6 +34,11 @@ namespace XUi.Converters
             string mathEquation = parameter as string;
             double result = 0;
 
+            // Exit condition
+            if (string.IsNullOrWhiteSpace(mathEquation))
+                return result;
+
+
             // Replace all the @VALUE iteration by the value
             mathEquation = mathEquation.Replace(" ", "");
             mathEquation = mathEquation.Replace("@VALUE", value.ToString());
@@ -54,9 +59,9 @@ namespace XUi.Converters
             // Get all the matches and get all the value
             string[] parenthesesMatches = parenthesesRegex.Matches(mathEquation).Cast<Match>().Select(m => m.Value).ToArray();
             foreach (string match in parenthesesMatches) {
-                // Eval the parenthese expression and add it to the result
+                // Eval the parentheses expression and add it to the result
                 result += ParenthesesEval(match);
-                // Remove the parenthese expression
+                // Remove the parentheses expression
                 mathEquation = mathEquation.Replace($"({match})", "");
             }
 
@@ -73,9 +78,19 @@ namespace XUi.Converters
             return result;
         }
 
+        /// <summary>
+        /// Convert back the value, not implemented
+        /// </summary>
+        /// 
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// 
+        /// <returns></returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         #endregion
@@ -89,9 +104,9 @@ namespace XUi.Converters
         /// <returns>Ressource value by his name</returns>
         public string RessourceEval(string ressource)
         {
-            string result = "";
+            string result;
             // Get the ressource value
-            object value = XUiTheme.XUiDictionnaries[ressource];
+            object value = XUiTheme.XUiDictionaries[ressource];
 
             // Determine his type and parse it with is type
             if (value is double)
@@ -148,78 +163,85 @@ namespace XUi.Converters
         /// <returns>Math expression evaluated by the operators and the numbers passed in the method</returns>
         public double MathExpressionEval(string[] operators, string[] numbers)
         {
-            // Define some variables
-            double result = double.Parse(numbers[0]);
-            int operatorCount = operators.Length - 1;
-            int indexNumbersMatch = 0;
-
-            for (int i = 0; i <= operatorCount; i++)
+            try
             {
-                // Check if the operators is not blank
-                if (operators[i] != "")
+                // Define some variables
+                double result = double.Parse(numbers[0]);
+                int operatorCount = operators.Length - 1;
+                int indexNumbersMatch = 0;
+
+                for (int i = 0; i <= operatorCount; i++)
                 {
-                    if (i == 0 && operators[i] != "")
+                    // Check if the operators is not blank
+                    if (operators[i] != "")
                     {
-                        // Switch the operators
-                        switch (operators[i])
+                        if (i == 0 && operators[i] != "")
                         {
-                            case "+":
-                                result += double.Parse(numbers[indexNumbersMatch]) + double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                            // Switch the operators
+                            switch (operators[i])
+                            {
+                                case "+":
+                                    result += double.Parse(numbers[indexNumbersMatch]) + double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
 
-                            case "-":
-                                result += double.Parse(numbers[indexNumbersMatch]) - double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                                case "-":
+                                    result += double.Parse(numbers[indexNumbersMatch]) - double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
 
-                            case "*":
-                                result += double.Parse(numbers[indexNumbersMatch]) * double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                                case "*":
+                                    result += double.Parse(numbers[indexNumbersMatch]) * double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
 
-                            case "/":
-                                result += double.Parse(numbers[indexNumbersMatch]) / double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                                case "/":
+                                    result += double.Parse(numbers[indexNumbersMatch]) / double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
 
-                            case "%":
-                                result += double.Parse(numbers[indexNumbersMatch]) % double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                                case "%":
+                                    result += double.Parse(numbers[indexNumbersMatch]) % double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
+                            }
+
+                            // Update the index
+                            indexNumbersMatch += 2;
                         }
-
-                        // Update the index
-                        indexNumbersMatch += 2;
-                    }
-                    else if (operators[i] != "")
-                    {
-                        // Switch the operators
-                        switch (operators[i])
+                        else if (operators[i] != "")
                         {
-                            case "+":
-                                result = result + double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                            // Switch the operators
+                            switch (operators[i])
+                            {
+                                case "+":
+                                    result += double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
 
-                            case "-":
-                                result = result - double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                                case "-":
+                                    result -= double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
 
-                            case "*":
-                                result = result * double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                                case "*":
+                                    result *= double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
 
-                            case "/":
-                                result = result / double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                                case "/":
+                                    result /= double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
 
-                            case "%":
-                                result = result % double.Parse(numbers[indexNumbersMatch + 1]);
-                                break;
+                                case "%":
+                                    result %= double.Parse(numbers[indexNumbersMatch + 1]);
+                                    break;
+                            }
+
+                            // Update the index
+                            indexNumbersMatch += 1;
                         }
-
-                        // Update the index
-                        indexNumbersMatch += 1;
                     }
                 }
-            }
 
-            return result;
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

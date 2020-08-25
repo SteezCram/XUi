@@ -16,10 +16,16 @@ using System.Windows.Shapes;
 namespace XUi.Controls.Dialog
 {
     /// <summary>
-    /// Logique d'interaction pour SelectDialog.xaml
+    /// Select dialog of XUi, useful to get a specific date from the user
     /// </summary>
     public partial class SelectDialog : UserControl, IDialog
     {
+        /// <summary>
+        /// Show a select dialog with a specific title and message
+        /// </summary>
+        /// 
+        /// <param name="title">Title to use</param>
+        /// <param name="message">Message to use</param>
         public SelectDialog(string title, string message)
         {
             InitializeComponent();
@@ -31,6 +37,11 @@ namespace XUi.Controls.Dialog
             this.Loaded += DialogLoaded;
         }
 
+        /// <summary>
+        /// Show a select dialog with a specific dialog settings
+        /// </summary>
+        /// 
+        /// <param name="dialogSettings">Dialog settings to use</param>
         public SelectDialog(DialogSettings dialogSettings)
         {
             InitializeComponent();

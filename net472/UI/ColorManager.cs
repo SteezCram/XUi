@@ -58,22 +58,22 @@ namespace XUi.UI
             Color midColor = new Color
             {
                 A = 255,
-                R = (byte)((baseColor.R - 18 >= 0) ? (baseColor.R - 18) : 0),
-                G = (byte)((baseColor.G - 18 >= 0) ? (baseColor.G - 18) : 0),
-                B = (byte)((baseColor.B - 18 >= 0) ? (baseColor.B - 18) : 0)
+                R = (byte)((baseColor.R - 22 >= 0) ? (baseColor.R - 22) : 0),
+                G = (byte)((baseColor.G - 22 >= 0) ? (baseColor.G - 22) : 0),
+                B = (byte)((baseColor.B - 22 >= 0) ? (baseColor.B - 22) : 0)
             };
 
             Color darkColor = new Color
             {
                 A = 255,
-                R = (byte)((baseColor.R - 18 * 2 >= 0) ? (baseColor.R - 18 * 2) : 0),
-                G = (byte)((baseColor.G - 18 * 2 >= 0) ? (baseColor.G - 18 * 2) : 0),
-                B = (byte)((baseColor.B - 18 * 2 >= 0) ? (baseColor.B - 18 * 2) : 0)
+                R = (byte)((baseColor.R - 22 * 2 >= 0) ? (baseColor.R - 22 * 2) : 0),
+                G = (byte)((baseColor.G - 22 * 2 >= 0) ? (baseColor.G - 22 * 2) : 0),
+                B = (byte)((baseColor.B - 22 * 2 >= 0) ? (baseColor.B - 22 * 2) : 0)
             };
 
-            XUiTheme.XUiDictionnaries["BaseColor"] = baseColor;
-            XUiTheme.XUiDictionnaries["MidColor"] = midColor;
-            XUiTheme.XUiDictionnaries["DarkColor"] = darkColor;
+            XUiTheme.XUiDictionaries["BaseColor"] = baseColor;
+            XUiTheme.XUiDictionaries["MidColor"] = midColor;
+            XUiTheme.XUiDictionaries["DarkColor"] = darkColor;
         }
     }
 }

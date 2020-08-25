@@ -20,7 +20,7 @@
         <!-- Set the WindowChrome for the Window native behaviour -->
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
-                <WindowChrome ResizeBorderThickness="5"
+                <WindowChrome ResizeBorderThickness="0"
                               CornerRadius="{DynamicResource CornerRadius}"
                               GlassFrameThickness="0"
                               CaptionHeight="30"/>

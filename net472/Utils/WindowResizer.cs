@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
+using XUi.Controls;
 
 namespace XUi
 {
@@ -30,7 +31,7 @@ namespace XUi
     /// <summary>
     /// The dock position of the window
     /// </summary>
-    public enum WindowDockPosition
+    internal enum WindowDockPosition
     {
         /// <summary>
         /// Not docked
@@ -49,14 +50,14 @@ namespace XUi
     /// <summary>
     /// Fixes the issue with Windows of Style <see cref="WindowStyle.None"/> covering the taskbar
     /// </summary>
-    public class WindowResizer
+    internal class WindowResizer
     {
         #region Private Members
 
         /// <summary>
         /// The window to handle the resizing for
         /// </summary>
-        private Window mWindow;
+        private readonly Window mWindow;
 
         /// <summary>
         /// The last calculated available screen size
@@ -66,7 +67,7 @@ namespace XUi
         /// <summary>
         /// How close to the edge the window has to be to be detected as at the edge of the screen
         /// </summary>
-        private int mEdgeTolerance = 2;
+        private readonly int mEdgeTolerance = 2;
 
         /// <summary>
         /// The transform matrix used to convert WPF sizes to screen pixels
@@ -117,7 +118,6 @@ namespace XUi
         /// Default constructor
         /// </summary>
         /// <param name="window">The window to monitor and correctly maximize</param>
-        /// <param name="adjustSize">The callback for the host to adjust the maximum available size if needed</param>
         public WindowResizer(Window window)
         {
             mWindow = window;
@@ -209,7 +209,7 @@ namespace XUi
             var edgedRight = windowBottomRight.X >= (mScreenSize.Right - mEdgeTolerance);
 
             // Get docked position
-            var dock = WindowDockPosition.Undocked;
+            WindowDockPosition dock;
 
             // Left docking
             if (edgedTop && edgedBottom && edgedLeft)
@@ -248,8 +248,22 @@ namespace XUi
             {
                 // Handle the GetMinMaxInfo of the Window
                 case NativeMethods.WM_GETMINMAXINFO:
-                    WmGetMinMaxInfo(hwnd, lParam);
-                    handled = true;
+                    if (mWindow is XUiWindow) {
+                        WmGetMinMaxInfo(hwnd, lParam);
+                        handled = true;
+                    }
+                    else
+                    {
+                        MINMAXINFO minMaxInfo = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
+                        minMaxInfo.ptMaxSize.X = (int)mWindow.Width; //Set size manually
+                        minMaxInfo.ptMaxSize.Y = (int)mWindow.Height;
+                        minMaxInfo.ptMaxPosition.X = (int)mWindow.Left; //Stay at current position
+                        minMaxInfo.ptMaxPosition.Y = ((int)mWindow.Top < 0) ? 0 : (int)mWindow.Top;
+                        Marshal.StructureToPtr(minMaxInfo, lParam, true);
+
+                        handled = true;
+                        mWindow.WindowState = WindowState.Normal;
+                    }
                     break;
 
                 // Handle minimize, maximize window or close window
@@ -349,7 +363,7 @@ namespace XUi
 
     #region Dll Helper Structures
 
-    enum MonitorOptions : uint
+    internal enum MonitorOptions : uint
     {
         MONITOR_DEFAULTTONULL = 0x00000000,
         MONITOR_DEFAULTTOPRIMARY = 0x00000001,
@@ -358,7 +372,7 @@ namespace XUi
 
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    public class MONITORINFO
+    internal class MONITORINFO
     {
         public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
         public Rectangle rcMonitor = new Rectangle();
@@ -368,7 +382,7 @@ namespace XUi
 
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct Rectangle
+    internal struct Rectangle
     {
         public int Left, Top, Right, Bottom;
 
@@ -382,7 +396,7 @@ namespace XUi
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct MINMAXINFO
+    internal struct MINMAXINFO
     {
         public POINT ptReserved;
         public POINT ptMaxSize;
@@ -392,7 +406,7 @@ namespace XUi
     };
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct POINT
+    internal struct POINT
     {
         /// <summary>
         /// x coordinate of point.

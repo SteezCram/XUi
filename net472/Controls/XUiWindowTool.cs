@@ -18,7 +18,7 @@ namespace XUi.Controls
 {
     /// <summary>
     /// XUiWindowTool, wrap the <see cref="WindowStyle.ToolWindow"/> into the XUi style
-    /// Don't support <see cref="Dialogs.Dialog"/> from XUi
+    /// Don't support <see cref="Dialog.Dialog"/> from XUi
     /// </summary>
     /// 
     /// <remarks>
@@ -34,6 +34,9 @@ namespace XUi.Controls
             get { return (SolidColorBrush)GetValue(WindowBarBrushProperty); }
             set { SetValue(WindowBarBrushProperty, value); }
         }
+        /// <summary>
+        /// Window top bar brush DependencyProperty
+        /// </summary>
         public static readonly DependencyProperty WindowBarBrushProperty = DependencyProperty.Register("WindowBarBrush", typeof(SolidColorBrush), typeof(XUiWindowTool), new UIPropertyMetadata(Brushes.Black));
 
         static XUiWindowTool()
@@ -41,6 +44,9 @@ namespace XUi.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(XUiWindowTool), new FrameworkPropertyMetadata(typeof(XUiWindowTool)));
         }
 
+        /// <summary>
+        /// Show a <see cref="Window"/> with a <see cref="WindowStyle.ToolWindow"/> style. Do have a native <see cref="Dialog.Dialog"/> support and the XUi flat style applied
+        /// </summary>
         public XUiWindowTool()
         {
             // Load the default DataContext for the native Window behaviour
@@ -76,7 +82,7 @@ namespace XUi.Controls
 
             #region Private Members
 
-            private Window _window;
+            private readonly Window _window;
 
             #endregion
 

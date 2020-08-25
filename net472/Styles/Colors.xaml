@@ -35,39 +35,44 @@
 
     <!-- Flat Colors White Theme -->
     <Color x:Key="FlatBaseWhiteThemeColor">#ffffff</Color>
-    <Color x:Key="FlatOverWhiteThemeColor">#ededed</Color>
-    <Color x:Key="FlatPressWhiteThemeColor">#dbdbdb</Color>
-    <Color x:Key="FlatScrollOverWhiteThemeColor">#c9c9c9</Color>
-    <Color x:Key="FlatScrollPressWhiteThemeColor">#b7b7b7</Color>
+    <Color x:Key="FlatOverWhiteThemeColor">#e9e9e9</Color>
+    <Color x:Key="FlatPressWhiteThemeColor">#d3d3d3</Color>
+    <Color x:Key="FlatScrollOverWhiteThemeColor">#bdbdbd</Color>
+    <Color x:Key="FlatScrollPressWhiteThemeColor">#a7a7a7</Color>
+    <Color x:Key="FlatContextMenuWhiteThemeColor">#919191</Color>
 
     <SolidColorBrush x:Key="FlatBaseWhiteThemeBrush" Color="{DynamicResource FlatBaseWhiteThemeColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatOverWhiteThemeBrush" Color="{DynamicResource FlatOverWhiteThemeColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatPressWhiteThemeBrush" Color="{DynamicResource FlatPressWhiteThemeColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatScrollOverWhiteThemeBrush" Color="{DynamicResource FlatScrollOverWhiteThemeColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatScrollPressWhiteThemeBrush" Color="{DynamicResource FlatScrollPressBlackThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatContextMenuWhiteThemeBrush" Color="{DynamicResource FlatContextMenuWhiteThemeColor}" options:Freeze="True"/>
 
 
     <!-- Flat Colors Black Theme -->
     <Color x:Key="FlatBaseBlackThemeColor">#1c1c1c</Color>
-    <Color x:Key="FlatOverBlackThemeColor">#2e2e2e</Color>
-    <Color x:Key="FlatPressBlackThemeColor">#404040</Color>
-    <Color x:Key="FlatScrollOverBlackThemeColor">#525252</Color>
-    <Color x:Key="FlatScrollPressBlackThemeColor">#646464</Color>
+    <Color x:Key="FlatOverBlackThemeColor">#323232</Color>
+    <Color x:Key="FlatPressBlackThemeColor">#484848</Color>
+    <Color x:Key="FlatScrollOverBlackThemeColor">#5e5e5e</Color>
+    <Color x:Key="FlatScrollPressBlackThemeColor">#747474</Color>
+    <Color x:Key="FlatContextMenuBlackThemeColor">#a7a7a7</Color>
 
     <SolidColorBrush x:Key="FlatBaseBlackThemeBrush" Color="{DynamicResource FlatBaseBlackThemeColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatOverBlackThemeBrush" Color="{DynamicResource FlatOverBlackThemeColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatPressBlackThemeBrush" Color="{DynamicResource FlatPressBlackThemeColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatScrollOverBlackThemeBrush" Color="{DynamicResource FlatScrollOverBlackThemeColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatScrollPressBlackThemeBrush" Color="{DynamicResource FlatScrollPressBlackThemeColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatContextMenuBlackThemeBrush" Color="{DynamicResource FlatContextMenuBlackThemeColor}" options:Freeze="True"/>
 
 
     <!-- Used Colors -->
     <Color x:Key="ThemeColor">#ffffff</Color>
     <Color x:Key="FlatBaseColor">#ffffff</Color>
-    <Color x:Key="FlatOverColor">#f1f1f1</Color>
-    <Color x:Key="FlatPressColor">#e3e3e3</Color>
-    <Color x:Key="FlatScrollOverColor">#d5d5d5</Color>
-    <Color x:Key="FlatScrollPressColor">#c7c7c7</Color>
+    <Color x:Key="FlatOverColor">#e9e9e9</Color>
+    <Color x:Key="FlatPressColor">#d3d3d3</Color>
+    <Color x:Key="FlatScrollOverColor">#bdbdbd</Color>
+    <Color x:Key="FlatScrollPressColor">#a7a7a7</Color>
+    <Color x:Key="FlatContextMenuColor">#919191</Color>
     <Color x:Key="DialogTransparentColor">#3F808080</Color>
     <Color x:Key="FontColor">#000000</Color>
 
@@ -78,6 +83,7 @@
     <SolidColorBrush x:Key="FlatPressBrush" Color="{DynamicResource FlatPressColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatScrollOverBrush" Color="{DynamicResource FlatScrollOverColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FlatScrollPressBrush" Color="{DynamicResource FlatScrollPressColor}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="FlatContextMenuBrush" Color="{DynamicResource FlatContextMenuColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="DialogTransparentBrush" Color="{DynamicResource DialogTransparentColor}" options:Freeze="True"/>
     <SolidColorBrush x:Key="FontBrush" Color="{DynamicResource FontColor}" options:Freeze="True"/>
 

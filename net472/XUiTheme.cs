@@ -4,15 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using XUi.MarkupExtensions;
 
 namespace XUi
 {
-    public class XUiTheme
+    /// <summary>
+    /// Theme enumeration to know which theme is loaded
+    /// </summary>
+    public enum Theme
     {
-        public static ResourceDictionary XUiDictionnaries;
+        /// <summary>
+        /// Light theme
+        /// </summary>
+        Light = 1,
+        /// <summary>
+        /// Dark theme
+        /// </summary>
+        Dark = 2,
+    }
+
+    /// <summary>
+    /// XUiTheme of the application
+    /// </summary>
+    public static class XUiTheme
+    {
+        /// <summary>
+        /// Dictionary of the <see cref="XUiTheme"/>, contain all the resources
+        /// </summary>
+        public static ResourceDictionary XUiDictionaries;
 
         /// <summary>
-        /// Initialize the <see cref="XUiTheme.XUiDictionnaries"/>
+        /// Get the current theme of XUi
+        /// </summary>
+        public static Theme CurrentTheme => _currentTheme;
+
+        private static Theme _currentTheme = Theme.Light;
+
+        /// <summary>
+        /// Initialize the <see cref="XUiTheme.XUiDictionaries"/>
         /// </summary>
         public static void Initialize()
         {
@@ -21,7 +50,7 @@ namespace XUi
             };
 
             // Load it into memory
-            XUiDictionnaries = xuiGeneric;
+            XUiDictionaries = xuiGeneric;
         }
 
         /// <summary>
@@ -30,22 +59,27 @@ namespace XUi
         public static void EnableDarkMode()
         {
             // Redefine all the colors
-            XUiDictionnaries["ThemeColor"] = XUiDictionnaries["BlackThemeColor"];
-            XUiDictionnaries["FlatBaseColor"] = XUiDictionnaries["FlatBaseBlackThemeColor"];
-            XUiDictionnaries["FlatOverColor"] = XUiDictionnaries["FlatOverBlackThemeColor"];
-            XUiDictionnaries["FlatPressColor"] = XUiDictionnaries["FlatPressBlackThemeColor"];
-            XUiDictionnaries["FlatScrollOverColor"] = XUiDictionnaries["FlatScrollOverBlackThemeColor"];
-            XUiDictionnaries["FlatScrollPressColor"] = XUiDictionnaries["FlatScrollPressBlackThemeColor"];
-            XUiDictionnaries["FontColor"] = XUiDictionnaries["WhiteFontColor"];
+            XUiDictionaries["ThemeColor"] = XUiDictionaries["BlackThemeColor"];
+            XUiDictionaries["FlatBaseColor"] = XUiDictionaries["FlatBaseBlackThemeColor"];
+            XUiDictionaries["FlatOverColor"] = XUiDictionaries["FlatOverBlackThemeColor"];
+            XUiDictionaries["FlatPressColor"] = XUiDictionaries["FlatPressBlackThemeColor"];
+            XUiDictionaries["FlatScrollOverColor"] = XUiDictionaries["FlatScrollOverBlackThemeColor"];
+            XUiDictionaries["FlatScrollPressColor"] = XUiDictionaries["FlatScrollPressBlackThemeColor"];
+            XUiDictionaries["FlatContextMenuColor"] = XUiDictionaries["FlatContextMenuBlackThemeColor"];
+            XUiDictionaries["FontColor"] = XUiDictionaries["WhiteFontColor"];
 
             // Redefine all the brushes
-            XUiDictionnaries["ThemeBrush"] = XUiDictionnaries["BlackThemeBrush"];
-            XUiDictionnaries["FlatBaseBrush"] = XUiDictionnaries["FlatBaseBlackThemeBrush"];
-            XUiDictionnaries["FlatOverBrush"] = XUiDictionnaries["FlatOverBlackThemeBrush"];
-            XUiDictionnaries["FlatPressBrush"] = XUiDictionnaries["FlatPressBlackThemeBrush"];
-            XUiDictionnaries["FlatScrollOverBrush"] = XUiDictionnaries["FlatScrollOverBlackThemeBrush"];
-            XUiDictionnaries["FlatScrollPressBrush"] = XUiDictionnaries["FlatScrollPressBlackThemeBrush"];
-            XUiDictionnaries["FontBrush"] = XUiDictionnaries["WhiteFontBrush"];
+            XUiDictionaries["ThemeBrush"] = XUiDictionaries["BlackThemeBrush"];
+            XUiDictionaries["FlatBaseBrush"] = XUiDictionaries["FlatBaseBlackThemeBrush"];
+            XUiDictionaries["FlatOverBrush"] = XUiDictionaries["FlatOverBlackThemeBrush"];
+            XUiDictionaries["FlatPressBrush"] = XUiDictionaries["FlatPressBlackThemeBrush"];
+            XUiDictionaries["FlatScrollOverBrush"] = XUiDictionaries["FlatScrollOverBlackThemeBrush"];
+            XUiDictionaries["FlatScrollPressBrush"] = XUiDictionaries["FlatScrollPressBlackThemeBrush"];
+            XUiDictionaries["FlatContextMenuBrush"] = XUiDictionaries["FlatContextMenuBlackThemeBrush"];
+            XUiDictionaries["FontBrush"] = XUiDictionaries["WhiteFontBrush"];
+
+            _currentTheme = Theme.Dark;
+            AppThemeBinding.OnThemeChanged();
         }
 
         /// <summary>
@@ -54,22 +88,27 @@ namespace XUi
         public static void EnableLightMode()
         {
             // Redefine all the colors
-            XUiDictionnaries["ThemeColor"] = XUiDictionnaries["WhiteThemeColor"];
-            XUiDictionnaries["FlatBaseColor"] = XUiDictionnaries["FlatBaseWhiteThemeColor"];
-            XUiDictionnaries["FlatOverColor"] = XUiDictionnaries["FlatOverWhiteThemeColor"];
-            XUiDictionnaries["FlatPressColor"] = XUiDictionnaries["FlatPressWhiteThemeColor"];
-            XUiDictionnaries["FlatScrollOverColor"] = XUiDictionnaries["FlatScrollOverWhiteThemeColor"];
-            XUiDictionnaries["FlatScrollPressColor"] = XUiDictionnaries["FlatScrollPressWhiteThemeColor"];
-            XUiDictionnaries["FontColor"] = XUiDictionnaries["BlackFontColor"];
+            XUiDictionaries["ThemeColor"] = XUiDictionaries["WhiteThemeColor"];
+            XUiDictionaries["FlatBaseColor"] = XUiDictionaries["FlatBaseWhiteThemeColor"];
+            XUiDictionaries["FlatOverColor"] = XUiDictionaries["FlatOverWhiteThemeColor"];
+            XUiDictionaries["FlatPressColor"] = XUiDictionaries["FlatPressWhiteThemeColor"];
+            XUiDictionaries["FlatScrollOverColor"] = XUiDictionaries["FlatScrollOverWhiteThemeColor"];
+            XUiDictionaries["FlatScrollPressColor"] = XUiDictionaries["FlatScrollPressWhiteThemeColor"];
+            XUiDictionaries["FlatContextMenuColor"] = XUiDictionaries["FlatContextMenuWhiteThemeColor"];
+            XUiDictionaries["FontColor"] = XUiDictionaries["BlackFontColor"];
 
             // Redefine all the brushes
-            XUiDictionnaries["ThemeBrush"] = XUiDictionnaries["WhiteThemeBrush"];
-            XUiDictionnaries["FlatBaseBrush"] = XUiDictionnaries["FlatBaseWhiteThemeBrush"];
-            XUiDictionnaries["FlatOverBrush"] = XUiDictionnaries["FlatOverWhiteThemeBrush"];
-            XUiDictionnaries["FlatPressBrush"] = XUiDictionnaries["FlatPressWhiteThemeBrush"];
-            XUiDictionnaries["FlatScrollOverBrush"] = XUiDictionnaries["FlatScrollOverWhiteThemeBrush"];
-            XUiDictionnaries["FlatScrollPressBrush"] = XUiDictionnaries["FlatScrollPressWhiteThemeBrush"];
-            XUiDictionnaries["FontBrush"] = XUiDictionnaries["BlackFontBrush"];
+            XUiDictionaries["ThemeBrush"] = XUiDictionaries["WhiteThemeBrush"];
+            XUiDictionaries["FlatBaseBrush"] = XUiDictionaries["FlatBaseWhiteThemeBrush"];
+            XUiDictionaries["FlatOverBrush"] = XUiDictionaries["FlatOverWhiteThemeBrush"];
+            XUiDictionaries["FlatPressBrush"] = XUiDictionaries["FlatPressWhiteThemeBrush"];
+            XUiDictionaries["FlatScrollOverBrush"] = XUiDictionaries["FlatScrollOverWhiteThemeBrush"];
+            XUiDictionaries["FlatScrollPressBrush"] = XUiDictionaries["FlatScrollPressWhiteThemeBrush"];
+            XUiDictionaries["FlatContextMenuBrush"] = XUiDictionaries["FlatContextMenuWhiteThemeBrush"];
+            XUiDictionaries["FontBrush"] = XUiDictionaries["BlackFontBrush"];
+
+            _currentTheme = Theme.Light;
+            AppThemeBinding.OnThemeChanged();
         }
     }
 }

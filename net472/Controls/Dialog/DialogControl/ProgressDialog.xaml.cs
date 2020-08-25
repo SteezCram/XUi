@@ -18,10 +18,15 @@ using System.Windows.Shapes;
 namespace XUi.Controls.Dialog
 {
     /// <summary>
-    /// Logique d'interaction pour ProgressDialog.xaml
+    /// Input dialog of XUi, useful to show that something is done
     /// </summary>
     public partial class ProgressDialog : UserControl, IDialog
     {
+        /// <summary>
+        /// Show a progress dialog with a text
+        /// </summary>
+        /// 
+        /// <param name="text">Text to use</param>
         public ProgressDialog(string text = "")
         {
             InitializeComponent();
@@ -69,8 +74,18 @@ namespace XUi.Controls.Dialog
             await Task.Delay(250);
         }
 
+        /// <summary>
+        /// Set the text to show during the progress dialog
+        /// </summary>
+        /// 
+        /// <param name="text">Text to use</param>
         public void SetText(string text) => TextTextBlock.Text = text;
 
+        /// <summary>
+        /// Not implemented
+        /// </summary>
+        /// 
+        /// <returns></returns>
         public Task<MessageResult> WaitMessageResult()
         {
             throw new NotImplementedException();

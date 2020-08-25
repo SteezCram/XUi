@@ -1,0 +1,1166 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUi</name>
+    </assembly>
+    <members>
+        <member name="T:XUi.MarkupExtensions.AppThemeBinding">
+            <summary>
+            Get a resource depending on the theme loaded
+            </summary>
+        </member>
+        <member name="P:XUi.MarkupExtensions.AppThemeBinding.Light">
+            <summary>
+            Light property to use
+            </summary>
+        </member>
+        <member name="P:XUi.MarkupExtensions.AppThemeBinding.Dark">
+            <summary>
+            Dark property to use
+            </summary>
+        </member>
+        <member name="M:XUi.MarkupExtensions.AppThemeBinding.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Provide the value for the binding, add a listener to update the value in background
+            </summary>
+            
+            <param name="serviceProvider"></param>
+            
+            <returns>
+            Value to use
+            </returns>
+        </member>
+        <member name="M:XUi.MarkupExtensions.AppThemeBinding.InformThemeChanged">
+            <summary>
+            Make the change to the property
+            </summary>
+        </member>
+        <member name="M:XUi.MarkupExtensions.AppThemeBinding.OnThemeChanged">
+            <summary>
+            Trigger when the theme has changed
+            </summary>
+        </member>
+        <member name="M:XUi.MarkupExtensions.AppThemeBinding.GetResource">
+            <summary>
+            Get the resource
+            </summary>
+            
+            <returns>
+            Resource to set
+            </returns>
+        </member>
+        <member name="E:XUi.RelayCommand.CanExecuteChanged">
+            <summary>
+            Event fired when <see cref="M:XUi.RelayCommand.CanExecute(System.Object)"/> has changed
+            </summary>
+        </member>
+        <member name="M:XUi.RelayCommand.#ctor(System.Action)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:XUi.WindowDockPosition">
+            <summary>
+            The dock position of the window
+            </summary>
+        </member>
+        <member name="F:XUi.WindowDockPosition.Undocked">
+            <summary>
+            Not docked
+            </summary>
+        </member>
+        <member name="F:XUi.WindowDockPosition.Left">
+            <summary>
+            Docked to the left of the screen
+            </summary>
+        </member>
+        <member name="F:XUi.WindowDockPosition.Right">
+            <summary>
+            Docked to the right of the screen
+            </summary>
+        </member>
+        <member name="T:XUi.WindowResizer">
+            <summary>
+            Fixes the issue with Windows of Style <see cref="F:System.Windows.WindowStyle.None"/> covering the taskbar
+            </summary>
+        </member>
+        <member name="F:XUi.WindowResizer.mWindow">
+            <summary>
+            The window to handle the resizing for
+            </summary>
+        </member>
+        <member name="F:XUi.WindowResizer.mScreenSize">
+            <summary>
+            The last calculated available screen size
+            </summary>
+        </member>
+        <member name="F:XUi.WindowResizer.mEdgeTolerance">
+            <summary>
+            How close to the edge the window has to be to be detected as at the edge of the screen
+            </summary>
+        </member>
+        <member name="F:XUi.WindowResizer.mTransformToDevice">
+            <summary>
+            The transform matrix used to convert WPF sizes to screen pixels
+            </summary>
+        </member>
+        <member name="F:XUi.WindowResizer.mLastScreen">
+            <summary>
+            The last screen the window was on
+            </summary>
+        </member>
+        <member name="F:XUi.WindowResizer.mLastDock">
+            <summary>
+            The last known dock position
+            </summary>
+        </member>
+        <member name="E:XUi.WindowResizer.WindowDockChanged">
+            <summary>
+            Called when the window dock position changes
+            </summary>
+        </member>
+        <member name="M:XUi.WindowResizer.#ctor(System.Windows.Window)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="window">The window to monitor and correctly maximize</param>
+        </member>
+        <member name="M:XUi.WindowResizer.GetTransform">
+            <summary>
+            Gets the transform object used to convert WPF sizes to screen pixels
+            </summary>
+        </member>
+        <member name="M:XUi.WindowResizer.Window_SourceInitialized(System.Object,System.EventArgs)">
+            <summary>
+            Initialize and hook into the windows message pump
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XUi.WindowResizer.Window_SizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            Monitors for size changes and detects if the window has been docked (Aero snap) to an edge
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XUi.WindowResizer.WindowProc(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr,System.Boolean@)">
+            <summary>
+            Listens out for all windows messages for this window
+            </summary>
+            <param name="hwnd"></param>
+            <param name="msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <param name="handled"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XUi.WindowResizer.WmGetMinMaxInfo(System.IntPtr,System.IntPtr)">
+            <summary>
+            Get the min/max window size for this window
+            Correctly accounting for the taskbar size and position
+            </summary>
+            <param name="hwnd"></param>
+            <param name="lParam"></param>
+        </member>
+        <member name="F:XUi.POINT.X">
+            <summary>
+            x coordinate of point.
+            </summary>
+        </member>
+        <member name="F:XUi.POINT.Y">
+            <summary>
+            y coordinate of point.
+            </summary>
+        </member>
+        <member name="M:XUi.POINT.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Construct a point of coordinates (x,y).
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.DialogType">
+            <summary>
+            Dialog Type
+            Each dialog type have a special behaviour and a special method to be show
+            </summary>
+        </member>
+        <member name="F:XUi.Controls.Dialog.DialogType.Message">
+            <summary>
+            The dialog is a message
+            </summary>
+        </member>
+        <member name="F:XUi.Controls.Dialog.DialogType.Progress">
+            <summary>
+            The dialog is a progress
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.MessageResult">
+            <summary>
+            All the message result
+            Come from a special button
+            </summary>
+        </member>
+        <member name="F:XUi.Controls.Dialog.MessageResult.Yes">
+            <summary>
+            Affirmative result
+            </summary>
+        </member>
+        <member name="F:XUi.Controls.Dialog.MessageResult.No">
+            <summary>
+            Negative result
+            </summary>
+        </member>
+        <member name="F:XUi.Controls.Dialog.MessageResult.Custom1">
+            <summary>
+            Custom 1 result, make your own behaviour
+            </summary>
+        </member>
+        <member name="F:XUi.Controls.Dialog.MessageResult.Custom2">
+            <summary>
+            Custom 2 result, make your own behaviour
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.Dialog">
+            <summary>
+            Manage the dialog in XUi
+            Each dialog are base on <see cref="T:System.Windows.Controls.UserControl"/>
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowCustomDialog(XUi.Controls.XUiWindow,XUi.Controls.Dialog.IDialog)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.CustomDialog"/>
+            The dialog is defined by the UIElement sended to this method
+            Can take any controls
+            </summary>
+            
+            <param name="window">XUiWindow to use</param>
+            <param name="dialog">Dialog to load</param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.CustomDialog"/> to interact with him
+            </returns>
+            
+            <remarks>
+            Useful to create a dialog with some specific actions
+            </remarks>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowCustomDialog(System.Windows.Controls.Grid,XUi.Controls.Dialog.IDialog)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.CustomDialog"/>
+            The dialog is defined by the UIElement sended to this method
+            Can take any controls
+            </summary>
+            
+            <param name="grid">Grid to load the dialog</param>
+            <param name="dialog">Dialog to load</param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.CustomDialog"/> to interact with him
+            </returns>
+            
+            <remarks>
+            Useful to create a dialog with some specific actions
+            </remarks>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowInputDialog(XUi.Controls.XUiWindow,System.String,System.String,System.String)">
+            <summary>
+            Show an <see cref="T:XUi.Controls.Dialog.InputDialog"/>
+            </summary>
+            
+            <param name="window">XUiWindow to use</param>
+            <param name="title">Title to set</param>
+            <param name="message">Message to set</param>
+            <param name="dataToSet">Header of the textblock to set</param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.ProgressDialog"/> to interact with him
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowInputDialog(System.Windows.Controls.Grid,System.String,System.String,System.String)">
+            <summary>
+            Show an <see cref="T:XUi.Controls.Dialog.InputDialog"/>
+            </summary>
+            
+            <param name="grid">Grid to use</param>
+            <param name="title">Title to set</param>
+            <param name="message">Message to set</param>
+            <param name="dataToSet">Header of the textblock to set</param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.ProgressDialog"/> to interact with him
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowInputDialog(XUi.Controls.XUiWindow,XUi.Controls.Dialog.DialogSettings)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="window">Window to use </param>
+            <param name="dialogSettings">Dialog settings to use</param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.ProgressDialog"/> to interact with him
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowInputDialog(System.Windows.Controls.Grid,XUi.Controls.Dialog.DialogSettings)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="grid">Grid to use </param>
+            <param name="dialogSettings">Dialog settings to use</param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.ProgressDialog"/> to interact with him
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowMessageDialog(XUi.Controls.XUiWindow,System.String,System.String)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="window">Window to use</param>
+            <param name="title">Title of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            <param name="message">Message of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            
+            <returns>
+            A <see cref="T:XUi.Controls.Dialog.MessageResult"/> which depend of the button clicked by the user
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowMessageDialog(System.Windows.Controls.Grid,System.String,System.String)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="grid">Grid to use</param>
+            <param name="title">Title of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            <param name="message">Message of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            
+            <returns>
+            A <see cref="T:XUi.Controls.Dialog.MessageResult"/> which depend of the button clicked by the user
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowMessageDialog(XUi.Controls.XUiWindow,XUi.Controls.Dialog.DialogSettings)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="window">Window to use</param>
+            <param name="dialogSettings"><see cref="T:XUi.Controls.Dialog.DialogSettings"/> of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.MessageResult"/> which depend of the button clicked by the user
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowMessageDialog(System.Windows.Controls.Grid,XUi.Controls.Dialog.DialogSettings)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="grid">Grid to use</param>
+            <param name="dialogSettings"><see cref="T:XUi.Controls.Dialog.DialogSettings"/> of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.MessageResult"/> which depend of the button clicked by the user
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowProgressDialog(XUi.Controls.XUiWindow,System.String,System.Boolean)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.ProgressDialog"/>
+            </summary>
+            
+            <param name="window">Window to use</param>
+            <param name="text">Text to show</param>
+            <param name="keepAlive">If the dialog is reusable</param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.ProgressDialog"/> to interact with him
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowProgressDialog(System.Windows.Controls.Grid,System.String,System.Boolean)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.ProgressDialog"/>
+            </summary>
+            
+            <param name="grid">Grid to use</param>
+            <param name="text">Text to show</param>
+            <param name="keepAlive">If the dialog is reusable</param>
+            
+            <returns>
+            <see cref="T:XUi.Controls.Dialog.ProgressDialog"/> to interact with him
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowSelectDialog(XUi.Controls.XUiWindow,System.String,System.String,System.Collections.IEnumerable)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="window">Window to use</param>
+            <param name="title">Title of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            <param name="message">Message of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            <param name="itemSource">Item to set in the combo box</param>
+            
+            <returns>
+            <see cref="T:System.Object"/> which depend of the selected item
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowSelectDialog(System.Windows.Controls.Grid,System.String,System.String,System.Collections.IEnumerable)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="grid">Grid to use</param>
+            <param name="title">Title of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            <param name="message">Message of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            <param name="itemSource">Item to set in the combo box</param>
+            
+            <returns>
+            <see cref="T:System.Object"/> which depend of the selected item
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowSelectDialog(XUi.Controls.XUiWindow,XUi.Controls.Dialog.DialogSettings,System.Collections.IEnumerable)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="window">Window to use</param>
+            <param name="dialogSettings"><see cref="T:XUi.Controls.Dialog.DialogSettings"/> of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            <param name="itemSource">Item to set in the combo box</param>
+            
+            <returns>
+            <see cref="T:System.Object"/> which depend of the seleccted item
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.ShowSelectDialog(System.Windows.Controls.Grid,XUi.Controls.Dialog.DialogSettings,System.Collections.IEnumerable)">
+            <summary>
+            Show a <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="grid">Grid to use</param>
+            <param name="dialogSettings"><see cref="T:XUi.Controls.Dialog.DialogSettings"/> of the <see cref="T:XUi.Controls.Dialog.MessageDialog"/></param>
+            <param name="itemSource">Item to set in the combo box</param>
+            
+            <returns>
+            <see cref="T:System.Object"/> which depend of the seleccted item
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.CloseDialog(XUi.Controls.XUiWindow)">
+            <summary>
+            Close the <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="window">Window to remove the dialog</param>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.CloseDialog(System.Windows.Controls.Grid)">
+            <summary>
+            Close the <see cref="T:XUi.Controls.Dialog.MessageDialog"/>
+            </summary>
+            
+            <param name="grid">Grid to remove the dialog</param>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.Dialog.IsDialogOpen(XUi.Controls.XUiWindow)">
+            <summary>
+            Check if a dialog is already opened
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.DialogSettings">
+            <summary>
+            Dialog settings to all the dialog
+            Contains many settings around all the dialog type
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.Title">
+            <summary>
+            Title to set for the dialog
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.Message">
+            <summary>
+            Message to set for the dialog
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.DataToSet">
+            <summary>
+            Data type to enter for the dialog
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.IsProtected">
+            <summary>
+            If the input dialog must protect the input
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.DefaultButton">
+            <summary>
+            Set the default button text
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.YesText">
+            <summary>
+            Set the for the Yes button
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.NoText">
+            <summary>
+            Set the for the No button
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.Custom1Text">
+            <summary>
+            Set the for the Custom1 button
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.Custom2Text">
+            <summary>
+            Set the for the Custom2 button
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.ButtonAlignment">
+            <summary>
+            Defined the button horizontal alignment
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.TitleAlignment">
+            <summary>
+            Defined the title horizontal alignment
+            </summary>
+        </member>
+        <member name="P:XUi.Controls.Dialog.DialogSettings.MessageAlignment">
+            <summary>
+            Defined the message horizontal alignment
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.CustomDialog">
+            <summary>
+            Custom dialog for XUi
+            </summary>
+            <summary>
+            CustomDialog
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.Dialog.CustomDialog.#ctor(System.Windows.UIElement)">
+            <summary>
+            Custom dialog to show
+            </summary>
+            
+            <param name="dialog">Dialog content to set</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.CustomDialog.DialogLoaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Make the initial storyboard to the dialog
+            </summary>
+            
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.CustomDialog.ExitAnimation">
+            <summary>
+            Make the exit storyboard to the dialog
+            </summary>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.CustomDialog.WaitMessageResult">
+            <summary>
+            Wait the message, wait until the user click of one of the button
+            </summary>
+            
+            <returns></returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.CustomDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.MessageDialog">
+            <summary>
+            Message dialog of XUi, useful to show a message to the user
+            </summary>
+            <summary>
+            MessageDialog
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.Dialog.MessageDialog.#ctor(System.String,System.String)">
+            <summary>
+            Show a message dialog with a specific title and message
+            </summary>
+            
+            <param name="title">Title to use</param>
+            <param name="message">Message to use</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.MessageDialog.#ctor(XUi.Controls.Dialog.DialogSettings)">
+            <summary>
+            Show a message dialog with a specific dialog settings
+            </summary>
+            
+            <param name="dialogSettings">Dialog settings to use</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.MessageDialog.DialogLoaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Make the initial storyboard to the dialog
+            </summary>
+            
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.MessageDialog.ExitAnimation">
+            <summary>
+            Make the exit storyboard to the dialog
+            </summary>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.MessageDialog.WaitMessageResult">
+            <summary>
+            Wait the result of the dialog
+            </summary>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.MessageDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.ProgressDialog">
+            <summary>
+            Input dialog of XUi, useful to show that something is done
+            </summary>
+            <summary>
+            ProgressDialog
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.Dialog.ProgressDialog.#ctor(System.String)">
+            <summary>
+            Show a progress dialog with a text
+            </summary>
+            
+            <param name="text">Text to use</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.ProgressDialog.DialogLoaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Make the initial storyboard to the dialog
+            </summary>
+            
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.ProgressDialog.ExitAnimation">
+            <summary>
+            Make the exit storyboard to the dialog
+            </summary>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.ProgressDialog.SetText(System.String)">
+            <summary>
+            Set the text to show during the progress dialog
+            </summary>
+            
+            <param name="text">Text to use</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.ProgressDialog.WaitMessageResult">
+            <summary>
+            Not implemented
+            </summary>
+            
+            <returns></returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.ProgressDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.SelectDialog">
+            <summary>
+            Select dialog of XUi, useful to get a specific date from the user
+            </summary>
+            <summary>
+            SelectDialog
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.Dialog.SelectDialog.#ctor(System.String,System.String)">
+            <summary>
+            Show a select dialog with a specific title and message
+            </summary>
+            
+            <param name="title">Title to use</param>
+            <param name="message">Message to use</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.SelectDialog.#ctor(XUi.Controls.Dialog.DialogSettings)">
+            <summary>
+            Show a select dialog with a specific dialog settings
+            </summary>
+            
+            <param name="dialogSettings">Dialog settings to use</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.SelectDialog.DialogLoaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Make the initial storyboard to the dialog
+            </summary>
+            
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.SelectDialog.ExitAnimation">
+            <summary>
+            Make the exit storyboard to the dialog
+            </summary>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.SelectDialog.WaitMessageResult">
+            <summary>
+            Wait the result of the dialog
+            </summary>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.SelectDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.Dialog.IDialog">
+            <summary>
+            Interface for all the dialog, implement base method to interact with a dialog
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.Dialog.IDialog.WaitMessageResult">
+            <summary>
+            Wait the message result of the user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.IDialog.ExitAnimation">
+            <summary>
+            Start the exit animation for the dialog
+            </summary>
+            
+            <returns></returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.IDialog.DialogLoaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Loaded event of the dialog
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:XUi.Controls.Dialog.InputDialog">
+            <summary>
+            Input dialog of XUi, useful to get data from the user
+            </summary>
+            <summary>
+            InputDialog
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.Dialog.InputDialog.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Show an input dialog with a specific title and message
+            </summary>
+            
+            <param name="title">Title to use</param>
+            <param name="message">Message to use</param>
+            <param name="dataToSet">Data type to set</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.InputDialog.#ctor(XUi.Controls.Dialog.DialogSettings)">
+            <summary>
+            Show an input dialog with a specific dialog settings
+            </summary>
+            
+            <param name="dialogSettings">Dialog settings to use</param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.InputDialog.DialogLoaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Make the initial storyboard to the dialog
+            </summary>
+            
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XUi.Controls.Dialog.InputDialog.ExitAnimation">
+            <summary>
+            Make the exit storyboard to the dialog
+            </summary>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.InputDialog.WaitMessageResult">
+            <summary>
+            Wait the result of the dialog
+            </summary>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.InputDialog.DataEntered">
+            <summary>
+            Get data set by the user
+            </summary>
+            
+            <returns>
+            String data set
+            </returns>
+        </member>
+        <member name="M:XUi.Controls.Dialog.InputDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.XUiWindow">
+            <summary>
+            XUiWindow, wrap the <see cref="F:System.Windows.WindowStyle.ThreeDBorderWindow"/> into the XUi style
+            Support <see cref="T:XUi.Controls.Dialog.Dialog"/> from XUi
+            </summary>
+            
+            <remarks>
+            Implement a default DataContext, you can't put a DataContext on the XUiWindow itself, you must set it to another control
+            </remarks>
+        </member>
+        <member name="P:XUi.Controls.XUiWindow.WindowBarBrush">
+            <summary>
+            Set the Window top bar brush
+            </summary>
+        </member>
+        <member name="F:XUi.Controls.XUiWindow.WindowBarBrushProperty">
+            <summary>
+            Window top bar brush DependencyProperty
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.XUiWindow.#ctor">
+            <summary>
+            Show a <see cref="T:System.Windows.Window"/> with a native <see cref="T:XUi.Controls.Dialog.Dialog"/> support and the XUi flat style applied
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.XUiWindow.XUiWindowViewModel">
+            <summary>
+            Internal view model of <see cref="T:XUi.Controls.XUiWindowTool"/>
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.XUiWindow.XUiWindowViewModel.#ctor(System.Windows.Window)">
+            <summary>
+            Main constructor for XUi_Window
+            </summary>
+            
+            <param name="window"><see cref="T:System.Windows.Window"/> to set up the view model</param>
+        </member>
+        <member name="T:XUi.Controls.XUiWindowTool">
+            <summary>
+            XUiWindowTool, wrap the <see cref="F:System.Windows.WindowStyle.ToolWindow"/> into the XUi style
+            Don't support <see cref="T:XUi.Controls.Dialog.Dialog"/> from XUi
+            </summary>
+            
+            <remarks>
+            Implement a default DataContext, you can't put a DataContext on the XUiWindow itself, you must set it to another control
+            </remarks>
+        </member>
+        <member name="P:XUi.Controls.XUiWindowTool.WindowBarBrush">
+            <summary>
+            Set the Window top bar brush
+            </summary>
+        </member>
+        <member name="F:XUi.Controls.XUiWindowTool.WindowBarBrushProperty">
+            <summary>
+            Window top bar brush DependencyProperty
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.XUiWindowTool.#ctor">
+            <summary>
+            Show a <see cref="T:System.Windows.Window"/> with a <see cref="F:System.Windows.WindowStyle.ToolWindow"/> style. Do have a native <see cref="T:XUi.Controls.Dialog.Dialog"/> support and the XUi flat style applied
+            </summary>
+        </member>
+        <member name="T:XUi.Controls.XUiWindowTool.XUiWindowToolViewModel">
+            <summary>
+            Internal view model of <see cref="T:XUi.Controls.XUiWindowTool"/>
+            </summary>
+        </member>
+        <member name="M:XUi.Controls.XUiWindowTool.XUiWindowToolViewModel.#ctor(System.Windows.Window)">
+            <summary>
+            Main constructor for XUi_Window
+            </summary>
+            
+            <param name="window"><see cref="T:System.Windows.Window"/> to set up the view model</param>
+        </member>
+        <member name="T:XUi.Converters.MathConverter">
+            <summary>
+            Implement a math converter
+            Use @VALUE to get the value
+            Can get a ressource defined in the application
+            </summary>
+        </member>
+        <member name="M:XUi.Converters.MathConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converter base method
+            </summary>
+            
+            <param name="value">Value to use</param>
+            <param name="targetType"></param>
+            <param name="parameter">Main math expression</param>
+            <param name="culture"></param>
+            
+            <returns>Main math expression evaluated</returns>
+        </member>
+        <member name="M:XUi.Converters.MathConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Convert back the value, not implemented
+            </summary>
+            
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            
+            <returns></returns>
+        </member>
+        <member name="M:XUi.Converters.MathConverter.RessourceEval(System.String)">
+            <summary>
+            Find the ressource value in the application
+            </summary>
+            
+            <param name="ressource">Ressource name</param>
+            
+            <returns>Ressource value by his name</returns>
+        </member>
+        <member name="M:XUi.Converters.MathConverter.ParenthesesEval(System.String)">
+            <summary>
+            Evaluate a parenthese expression
+            </summary>
+            
+            <param name="mathEquation">Parenthese math expression</param>
+            
+            <returns>Parenthese expression evaluated</returns>
+        </member>
+        <member name="M:XUi.Converters.MathConverter.MathExpressionEval(System.String[],System.String[])">
+            <summary>
+            Evaluate any math expression
+            This method is the heart of the math converter
+            </summary>
+            
+            <param name="operators">All the operators in the math expression</param>
+            <param name="numbers">All the numbers in the math expression</param>
+            
+            <returns>Math expression evaluated by the operators and the numbers passed in the method</returns>
+        </member>
+        <member name="T:XUi.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:XUi.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:XUi.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="T:XUi.UI.AnimationManager">
+            <summary>
+            Interact with all the animation in XUi
+            </summary>
+        </member>
+        <member name="F:XUi.UI.AnimationManager.AnimationOpenDuration">
+            <summary>
+            Animation for "open" type animation, time in ms
+            </summary>
+        </member>
+        <member name="F:XUi.UI.AnimationManager.AnimationCloseDuration">
+            <summary>
+            Animation for "close" type animation, time in ms
+            </summary>
+        </member>
+        <member name="T:XUi.UI.AnimationManager.TransitionType">
+            <summary>
+            Contain all the transition type
+            </summary>
+        </member>
+        <member name="F:XUi.UI.AnimationManager.TransitionType.PageZoom">
+            <summary>
+            Page type transition
+            </summary>
+        </member>
+        <member name="M:XUi.UI.AnimationManager.LoadTransitionOpen(System.Windows.FrameworkElement,XUi.UI.AnimationManager.TransitionType,System.Int32)">
+            <summary>
+            Load a transition with the "open" type
+            </summary>
+            
+            <param name="element">Element to apply the transition</param>
+            <param name="transitionType">Transition type to apply</param>
+            <param name="transitionTime">Transition time to wait</param>
+        </member>
+        <member name="M:XUi.UI.AnimationManager.LoadTransitionClose(System.Windows.FrameworkElement,XUi.UI.AnimationManager.TransitionType,System.Int32)">
+            <summary>
+            Load a transition with the "close" type
+            </summary>
+            
+            <param name="element">Element to apply the transition</param>
+            <param name="transitionType">Transition type to apply</param>
+            <param name="transitionTime">Transition time to wait</param>
+        </member>
+        <member name="T:XUi.UI.AnimationManager.AnimationType">
+            <summary>
+            Contain all the animation type
+            </summary>
+        </member>
+        <member name="F:XUi.UI.AnimationManager.AnimationType.Fade">
+            <summary>
+            Fade type animation
+            </summary>
+        </member>
+        <member name="F:XUi.UI.AnimationManager.AnimationType.ExpandHeight">
+            <summary>
+            Expand height type animation
+            </summary>
+        </member>
+        <member name="F:XUi.UI.AnimationManager.AnimationType.ExpandWidth">
+            <summary>
+            Expand width type animation
+            </summary>
+        </member>
+        <member name="F:XUi.UI.AnimationManager.AnimationType.Rotate">
+            <summary>
+            Rotate type animation
+            </summary>
+        </member>
+        <member name="M:XUi.UI.AnimationManager.LoadAnimation(System.Windows.FrameworkElement,XUi.UI.AnimationManager.AnimationType,System.Double,System.Double,System.Int32)">
+            <summary>
+            Load an animation from the a <see cref="T:XUi.UI.AnimationManager.AnimationType"/> enum
+            </summary>
+            
+            <param name="element">Element to load the animation</param>
+            <param name="animationType">Animation type, search for an <see cref="T:System.Windows.Media.Animation.Storyboard"/> in the ressource</param>
+            <param name="fromValue">Start value of the animation</param>
+            <param name="toValue">End value of the animation</param>
+            <param name="animationTime">Time of the animation in milliseconds</param>
+            
+            <returns>
+            </returns>
+        </member>
+        <member name="T:XUi.UI.ColorManager">
+            <summary>
+            Manage the color of XUi
+            </summary>
+        </member>
+        <member name="M:XUi.UI.ColorManager.CreateBaseColor(System.String)">
+            <summary>
+            Return the base color depend to the hex color
+            </summary>
+            
+            <param name="hexadecimalColor">Hexadecimal color in <see cref="T:System.String"/></param>
+            
+            <returns>
+            Base color created
+            </returns>
+        </member>
+        <member name="M:XUi.UI.ColorManager.CreateBaseColor(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Return the base color depend to the rgb values
+            </summary>
+            
+            <param name="r">Red color value</param>
+            <param name="g">Green color value</param>
+            <param name="b">Blue color value</param>
+            
+            <returns>
+            Base color created
+            </returns>
+        </member>
+        <member name="M:XUi.UI.ColorManager.CreateColorPalette(System.Windows.Media.Color)">
+            <summary>
+            Create the new color palette from the base color
+            </summary>
+            
+            <param name="baseColor">Color base used to create the color palette</param>
+        </member>
+        <member name="T:XUi.Theme">
+            <summary>
+            Theme enumeration to know which theme is loaded
+            </summary>
+        </member>
+        <member name="F:XUi.Theme.Light">
+            <summary>
+            Light theme
+            </summary>
+        </member>
+        <member name="F:XUi.Theme.Dark">
+            <summary>
+            Dark theme
+            </summary>
+        </member>
+        <member name="T:XUi.XUiTheme">
+            <summary>
+            XUiTheme of the application
+            </summary>
+        </member>
+        <member name="F:XUi.XUiTheme.XUiDictionaries">
+            <summary>
+            Dictionary of the <see cref="T:XUi.XUiTheme"/>, contain all the resources
+            </summary>
+        </member>
+        <member name="P:XUi.XUiTheme.CurrentTheme">
+            <summary>
+            Get the current theme of XUi
+            </summary>
+        </member>
+        <member name="M:XUi.XUiTheme.Initialize">
+            <summary>
+            Initialize the <see cref="F:XUi.XUiTheme.XUiDictionaries"/>
+            </summary>
+        </member>
+        <member name="M:XUi.XUiTheme.EnableDarkMode">
+            <summary>
+            Change all the colors to the black mode
+            </summary>
+        </member>
+        <member name="M:XUi.XUiTheme.EnableLightMode">
+            <summary>
+            Change all the colors to the light mode
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -19,7 +19,7 @@ namespace XUi.UI.Animation
         FromBy
     }
 
-    public class LinearGradientAnimation : AnimationTimeline
+    class LinearGradientAnimation : AnimationTimeline
     {
         #region Dependency Properties
 

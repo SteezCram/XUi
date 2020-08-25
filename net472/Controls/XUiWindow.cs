@@ -19,7 +19,7 @@ namespace XUi.Controls
 {
     /// <summary>
     /// XUiWindow, wrap the <see cref="WindowStyle.ThreeDBorderWindow"/> into the XUi style
-    /// Support <see cref="Dialogs.Dialog"/> from XUi
+    /// Support <see cref="Dialog.Dialog"/> from XUi
     /// </summary>
     /// 
     /// <remarks>
@@ -35,6 +35,9 @@ namespace XUi.Controls
             get { return (SolidColorBrush)GetValue(WindowBarBrushProperty); }
             set { SetValue(WindowBarBrushProperty, value); }
         }
+        /// <summary>
+        /// Window top bar brush DependencyProperty
+        /// </summary>
         public static readonly DependencyProperty WindowBarBrushProperty = DependencyProperty.Register("WindowBarBrush", typeof(SolidColorBrush), typeof(XUiWindow), new UIPropertyMetadata(Brushes.Black));
 
         static XUiWindow()
@@ -42,6 +45,9 @@ namespace XUi.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(XUiWindow), new FrameworkPropertyMetadata(typeof(XUiWindow)));
         }
 
+        /// <summary>
+        /// Show a <see cref="Window"/> with a native <see cref="Dialog.Dialog"/> support and the XUi flat style applied
+        /// </summary>
         public XUiWindow()
         {
             // Load the default DataContext for the native Window behaviour
@@ -84,9 +90,9 @@ namespace XUi.Controls
 
             #region Private Members
 
-            private Window _window;
+            private readonly Window _window;
 
-            private CornerRadius _borderCorner = ((CornerRadius)XUiTheme.XUiDictionnaries["CornerRadius"]);
+            private CornerRadius _borderCorner = ((CornerRadius)XUiTheme.XUiDictionaries["CornerRadius"]);
             private PackIconMaterialKind _maximizeIcon = PackIconMaterialKind.WindowMaximize;
 
             #endregion
@@ -116,7 +122,7 @@ namespace XUi.Controls
                     else
                     {
                         // Set all the extra space
-                        BorderCorner = ((CornerRadius)XUiTheme.XUiDictionnaries["CornerRadius"]);
+                        BorderCorner = ((CornerRadius)XUiTheme.XUiDictionaries["CornerRadius"]);
                         MaximizeIcon = PackIconMaterialKind.WindowMaximize;
                     }
 
@@ -151,7 +157,7 @@ namespace XUi.Controls
                     else
                     {
                         // Set all the extra space
-                        BorderCorner = ((CornerRadius)XUiTheme.XUiDictionnaries["CornerRadius"]);
+                        BorderCorner = ((CornerRadius)XUiTheme.XUiDictionaries["CornerRadius"]);
                         MaximizeIcon = PackIconMaterialKind.WindowMaximize;
                     }
                 });

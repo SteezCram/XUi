@@ -23,6 +23,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -116,9 +118,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Behind\BaseViewModel.cs" />
-    <Compile Include="Behind\RelayCommand.cs" />
-    <Compile Include="Behind\WindowResizer.cs" />
+    <Compile Include="MarkupExtensions\AppThemeBinding.cs" />
+    <Compile Include="MarkupExtensions\IEventListener.cs" />
+    <Compile Include="Utils\BaseViewModel.cs" />
+    <Compile Include="Utils\RelayCommand.cs" />
+    <Compile Include="Utils\WindowResizer.cs" />
     <Compile Include="Controls\Dialog\Dialog.cs" />
     <Compile Include="Controls\Dialog\DialogControl\CustomDialog.xaml.cs">
       <DependentUpon>CustomDialog.xaml</DependentUpon>
@@ -262,5 +266,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

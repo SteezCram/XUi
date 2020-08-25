@@ -17,12 +17,19 @@ using System.Windows.Shapes;
 namespace XUi.Controls.Dialog
 {
     /// <summary>
-    /// Logique d'interaction pour InputDialog.xaml
+    /// Input dialog of XUi, useful to get data from the user
     /// </summary>
     public partial class InputDialog : UserControl, IDialog
     {
-        private bool _isProtected = false;
+        private readonly bool _isProtected = false;
 
+        /// <summary>
+        /// Show an input dialog with a specific title and message
+        /// </summary>
+        /// 
+        /// <param name="title">Title to use</param>
+        /// <param name="message">Message to use</param>
+        /// <param name="dataToSet">Data type to set</param>
         public InputDialog(string title, string message, string dataToSet)
         {
             InitializeComponent();
@@ -33,6 +40,11 @@ namespace XUi.Controls.Dialog
             this.Loaded += DialogLoaded;
         }
 
+        /// <summary>
+        /// Show an input dialog with a specific dialog settings
+        /// </summary>
+        /// 
+        /// <param name="dialogSettings">Dialog settings to use</param>
         public InputDialog(DialogSettings dialogSettings)
         {
             InitializeComponent();
@@ -118,6 +130,13 @@ namespace XUi.Controls.Dialog
 
         #endregion
 
+        /// <summary>
+        /// Get data set by the user
+        /// </summary>
+        /// 
+        /// <returns>
+        /// String data set
+        /// </returns>
         public string DataEntered()
         { 
             if (!_isProtected)
